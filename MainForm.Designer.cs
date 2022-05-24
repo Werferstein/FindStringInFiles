@@ -60,6 +60,7 @@ namespace FindStringInFile
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FindStringInFileForm));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabelTotalRows = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFile = new System.Windows.Forms.ToolStripStatusLabel();
             this.textBoxFilter = new System.Windows.Forms.TextBox();
@@ -94,7 +95,6 @@ namespace FindStringInFile
             this.label5 = new System.Windows.Forms.Label();
             this.DirectorySelect = new System.Windows.Forms.ComboBox();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -116,11 +116,16 @@ namespace FindStringInFile
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 19);
+            // 
             // toolStripStatusLabelTotalRows
             // 
             this.toolStripStatusLabelTotalRows.AutoSize = false;
             this.toolStripStatusLabelTotalRows.Name = "toolStripStatusLabelTotalRows";
-            this.toolStripStatusLabelTotalRows.Size = new System.Drawing.Size(200, 22);
+            this.toolStripStatusLabelTotalRows.Size = new System.Drawing.Size(200, 21);
             this.toolStripStatusLabelTotalRows.Text = "Total rows:";
             this.toolStripStatusLabelTotalRows.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -128,7 +133,7 @@ namespace FindStringInFile
             // 
             this.toolStripStatusLabelFile.AutoToolTip = true;
             this.toolStripStatusLabelFile.Name = "toolStripStatusLabelFile";
-            this.toolStripStatusLabelFile.Size = new System.Drawing.Size(0, 22);
+            this.toolStripStatusLabelFile.Size = new System.Drawing.Size(0, 21);
             this.toolStripStatusLabelFile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolStripStatusLabelFile.TextChanged += new System.EventHandler(this.ToolStripStatusLabelFile_TextChanged);
             // 
@@ -221,8 +226,9 @@ namespace FindStringInFile
             // queryToolStripMenuItem
             // 
             this.queryToolStripMenuItem.Name = "queryToolStripMenuItem";
-            this.queryToolStripMenuItem.Size = new System.Drawing.Size(330, 26);
+            this.queryToolStripMenuItem.Size = new System.Drawing.Size(338, 26);
             this.queryToolStripMenuItem.Text = "Info";
+            this.queryToolStripMenuItem.Click += new System.EventHandler(this.TS_Version_Click);
             // 
             // systemToolStripMenuItem
             // 
@@ -231,7 +237,7 @@ namespace FindStringInFile
             this.toolStripMenuItemNotepadPath,
             this.toolStripMenuItemNotePadWindows});
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
-            this.systemToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.systemToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
             this.systemToolStripMenuItem.Text = "System";
             // 
             // toolStripMenuItemNotepadPath
@@ -243,7 +249,7 @@ namespace FindStringInFile
             this.toolStripMenuItem1,
             this.toolStripTextBoxNotepadPlusStart});
             this.toolStripMenuItemNotepadPath.Name = "toolStripMenuItemNotepadPath";
-            this.toolStripMenuItemNotepadPath.Size = new System.Drawing.Size(330, 26);
+            this.toolStripMenuItemNotepadPath.Size = new System.Drawing.Size(338, 26);
             this.toolStripMenuItemNotepadPath.Text = "notepad++ path                                  ";
             this.toolStripMenuItemNotepadPath.DoubleClick += new System.EventHandler(this.ToolStripMenuItemNotepadPath_DoubleClick);
             // 
@@ -251,11 +257,12 @@ namespace FindStringInFile
             // 
             this.toolStripMenuItem4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(647, 26);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(655, 26);
             this.toolStripMenuItem4.Text = "Path:";
             // 
             // toolStripTextBoxNotepadPath
             // 
+            this.toolStripTextBoxNotepadPath.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxNotepadPath.Name = "toolStripTextBoxNotepadPath";
             this.toolStripTextBoxNotepadPath.Size = new System.Drawing.Size(400, 27);
             this.toolStripTextBoxNotepadPath.TextChanged += new System.EventHandler(this.ToolStripTextBoxNotepadPath_TextChanged_1);
@@ -264,12 +271,13 @@ namespace FindStringInFile
             // 
             this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(647, 26);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(655, 26);
             this.toolStripMenuItem1.Text = "Start parameter: ($path = file path, $linenr = line number, $find = search string" +
     ")";
             // 
             // toolStripTextBoxNotepadPlusStart
             // 
+            this.toolStripTextBoxNotepadPlusStart.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxNotepadPlusStart.Name = "toolStripTextBoxNotepadPlusStart";
             this.toolStripTextBoxNotepadPlusStart.Size = new System.Drawing.Size(400, 27);
             this.toolStripTextBoxNotepadPlusStart.TextChanged += new System.EventHandler(this.ToolStripTextBoxNotepadPlusStart_TextChanged);
@@ -284,7 +292,7 @@ namespace FindStringInFile
             this.toolStripMenuItem2,
             this.toolStripTextBoxWinStart});
             this.toolStripMenuItemNotePadWindows.Name = "toolStripMenuItemNotePadWindows";
-            this.toolStripMenuItemNotePadWindows.Size = new System.Drawing.Size(330, 26);
+            this.toolStripMenuItemNotePadWindows.Size = new System.Drawing.Size(338, 26);
             this.toolStripMenuItemNotePadWindows.Text = "notepad (Windows)";
             this.toolStripMenuItemNotePadWindows.DoubleClick += new System.EventHandler(this.ToolStripMenuItemNotePadWindows_DoubleClick);
             // 
@@ -292,11 +300,12 @@ namespace FindStringInFile
             // 
             this.pathToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
-            this.pathToolStripMenuItem.Size = new System.Drawing.Size(647, 26);
+            this.pathToolStripMenuItem.Size = new System.Drawing.Size(655, 26);
             this.pathToolStripMenuItem.Text = "Path:";
             // 
             // toolStripTextBoxWinPath
             // 
+            this.toolStripTextBoxWinPath.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxWinPath.Name = "toolStripTextBoxWinPath";
             this.toolStripTextBoxWinPath.Size = new System.Drawing.Size(400, 27);
             this.toolStripTextBoxWinPath.TextChanged += new System.EventHandler(this.ToolStripTextBoxWinPath_TextChanged);
@@ -305,12 +314,13 @@ namespace FindStringInFile
             // 
             this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(647, 26);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(655, 26);
             this.toolStripMenuItem2.Text = "Start parameter: ($path = file path, $linenr = line number, $find = search string" +
     ")";
             // 
             // toolStripTextBoxWinStart
             // 
+            this.toolStripTextBoxWinStart.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxWinStart.Name = "toolStripTextBoxWinStart";
             this.toolStripTextBoxWinStart.Size = new System.Drawing.Size(400, 27);
             this.toolStripTextBoxWinStart.TextChanged += new System.EventHandler(this.ToolStripTextBoxWinStart_TextChanged);
@@ -333,7 +343,6 @@ namespace FindStringInFile
             this.systemToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(779, 28);
             this.menuStrip1.TabIndex = 21;
             this.menuStrip1.Text = "menuStrip1";
@@ -479,11 +488,6 @@ namespace FindStringInFile
             this.DirectorySelect.TabStop = false;
             this.DirectorySelect.Text = "TopDirectoryOnly";
             this.DirectorySelect.SelectedIndexChanged += new System.EventHandler(this.DirectorySelect_SelectedIndexChanged);
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 21);
             // 
             // FindStringInFileForm
             // 

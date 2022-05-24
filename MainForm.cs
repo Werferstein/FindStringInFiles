@@ -61,9 +61,9 @@ namespace FindStringInFile
             //Find notepad++.exe
             if (string.IsNullOrWhiteSpace(toolStripTextBoxNotepadPath.Text))
             {
-                try
-                {
                     Task.Run(() =>
+                    {
+                    try
                     {
                         string NotepadPath = (System.IO.Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "notepad++.exe", System.IO.SearchOption.AllDirectories))[0];
 
@@ -75,10 +75,16 @@ namespace FindStringInFile
                         {
                             GetPath(NotepadPath);
                         }
+                        }
+                    catch(Exception ex)
+                        {
+#if DEBUG
+                            //labelString.Text = ex.Message;
+                            MessageBox.Show("ERROR: " + ex.Message);
+#endif  
+                        }
                     }
                     );
-                }
-                catch { }
             }
             #endregion
         }
@@ -799,6 +805,27 @@ namespace FindStringInFile
             }
             toolStripProgressBar1.Value = _value;
         }
+
+        private void TS_Version_Click(object sender, EventArgs e)
+        {
+            string t = "2015 Ingolf Hill, www.werferstein.org" + Environment.NewLine + Environment.NewLine + VersionLabel();
+
+            MessageBox.Show(t, "Version", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+        public string VersionLabel()
+        {
+            if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
+            {
+                Version ver = System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
+                return string.Format(" {4}, Version: {0}.{1}.{2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision, System.Reflection.Assembly.GetEntryAssembly().GetName().Name);
+            }
+            else
+            {
+                var ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+                return string.Format(" {4}, Version: {0}.{1}.{2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision, System.Reflection.Assembly.GetEntryAssembly().GetName().Name);
+            }
+        }
     }
 
     public struct Container
@@ -809,4 +836,6 @@ namespace FindStringInFile
         public CancellationToken Token { get; set; }
 
     }
+
+
 }
