@@ -1,0 +1,12 @@
+D:\Bluefrog\Documents\GitHub\FindStringInFiles\obj\Debug\FindStringInFile.csproj.AssemblyReference.cache
+D:\Bluefrog\Documents\GitHub\FindStringInFiles\obj\Debug\FindStringInFile.FindStringInFileForm.resources
+D:\Bluefrog\Documents\GitHub\FindStringInFiles\obj\Debug\FindStringInFile.Properties.Resources.resources
+D:\Bluefrog\Documents\GitHub\FindStringInFiles\obj\Debug\FindStringInFile.csproj.GenerateResource.cache
+D:\Bluefrog\Documents\GitHub\FindStringInFiles\obj\Debug\FindStringInFile.csproj.CoreCompileInputs.cache
+D:\Bluefrog\Documents\GitHub\FindStringInFiles\bin\Debug\FindStringInFile.exe.config
+D:\Bluefrog\Documents\GitHub\FindStringInFiles\bin\Debug\FindStringInFile.exe
+D:\Bluefrog\Documents\GitHub\FindStringInFiles\bin\Debug\FindStringInFile.pdb
+D:\Bluefrog\Documents\GitHub\FindStringInFiles\bin\Debug\AdvancedDataGridView.dll
+D:\Bluefrog\Documents\GitHub\FindStringInFiles\obj\Debug\FindStringInFile.csproj.CopyComplete
+D:\Bluefrog\Documents\GitHub\FindStringInFiles\obj\Debug\FindStringInFile.exe
+D:\Bluefrog\Documents\GitHub\FindStringInFiles\obj\Debug\FindStringInFile.pdb
