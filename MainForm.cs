@@ -45,13 +45,19 @@ namespace FindStringInFile
 
     public partial class FindStringInFileForm : Form
     {
-        
-        private bool blockGui = false;
-        AdvancedDataGridView DataGrid;
+        private System.Timers.Timer GUI_timer = new System.Timers.Timer();
+        private Status finderState = Status.Result;   //finder state
+        private bool blockGui = false;              //block GUI IO
+        private AdvancedDataGridView DataGrid;
 
         public FindStringInFileForm()
         {
             InitializeComponent();
+            //int gui event timer
+            GUI_timer.Elapsed += new System.Timers.ElapsedEventHandler(DisplayTimeEvent);
+            GUI_timer.Interval = 500;
+            GUI_timer.Start();
+
             //CheckForIllegalCrossThreadCalls = false;
             buttonCancel.Visible = false;
 
@@ -65,9 +71,19 @@ namespace FindStringInFile
                     {
                     try
                     {
-                        string NotepadPath = (System.IO.Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "notepad++.exe", System.IO.SearchOption.AllDirectories))[0];
+                            var t = Environment.Is64BitOperatingSystem ? Environment.GetEnvironmentVariable("ProgramFiles(x86)") : Environment.GetEnvironmentVariable("ProgramFiles");
+                            string NotepadPath = string.Empty;
+                            try
+                            {
+                                NotepadPath = (System.IO.Directory.GetFiles(t, "notepad++.exe", System.IO.SearchOption.AllDirectories))[0];
+                            }
+                            catch 
+                            {}
+                            
+                            if (string.IsNullOrWhiteSpace(NotepadPath))
+                                NotepadPath = (System.IO.Directory.GetFiles(Environment.GetEnvironmentVariable("ProgramFiles"), "notepad++.exe", System.IO.SearchOption.AllDirectories))[0];
 
-                        if (string.IsNullOrWhiteSpace(NotepadPath) || !File.Exists(NotepadPath))
+                            if (string.IsNullOrWhiteSpace(NotepadPath) || !File.Exists(NotepadPath))
                         {
                             NotepadPath = (System.IO.Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "notepad++.exe", System.IO.SearchOption.AllDirectories))[0];
                         }
@@ -89,11 +105,43 @@ namespace FindStringInFile
             #endregion
         }
 
+        private void DisplayTimeEvent(object source, System.Timers.ElapsedEventArgs e)
+        {
+            if (this.InvokeRequired)
+            {
+                MethodInvoker del = delegate { DisplayTimeEvent(source , e);};
+                this.Invoke(del);
+                return;
+            }
+
+            if ((finderState & Status.Result) > 0 ||                
+                (finderState & Status.Cancel) > 0)
+            {
+                if (!button_RunButton.Enabled)
+                {
+                    button_RunButton.Enabled = true;
+                    buttonCancel.Visible = false;                   
+                    StopProgressBar();
+                    buttonRefresh();
+                }               
+            }
+
+            if ((finderState & Status.Run) > 0)
+            {
+                if (button_RunButton.Enabled)
+                {
+                    button_RunButton.Enabled = false;
+                    buttonCancel.Visible = true;                    
+                    StartProgressBar();
+                    buttonRefresh();
+                }
+            }
+        }
+
+
         private void FindStringInFileForm_Load(object sender, EventArgs e)
         {
-            LoadData();
-                      
-
+            LoadData();                      
         }
 
         private void GetPath(string path)
@@ -118,11 +166,13 @@ namespace FindStringInFile
 
         private void Button_RunButton_Click(object sender, EventArgs e)
         {
-            if (!(Finder.ProgStatus == Status.Stop|| Finder.ProgStatus != Status.Stop)) {return;}
+            if ((Finder.ProgStatus & Status.Run) > 0 ) {return;}
 
-   
+            
             Finder.MyFinderState -= Finder_MyFinderState;
             Finder.MyFinderState += Finder_MyFinderState;
+            toolStripStatusLabelTotalRows.Text = string.Empty;
+            toolStripStatusLabelFile.Text = string.Empty;
 
             panelTable.Controls.Clear();
 
@@ -133,7 +183,6 @@ namespace FindStringInFile
 
 
             StartProgressBar();
-           
 
             Cursor.Current = Cursors.WaitCursor;
 
@@ -141,6 +190,7 @@ namespace FindStringInFile
             Finder.FindAll(textBoxNr.Text, textBoxPath.Text, textBoxFilter.Text, s, 6, Program.ProgConfig.StrEncoding);
 
             Cursor.Current = Cursors.Default;
+
         }
 
        
@@ -233,56 +283,52 @@ namespace FindStringInFile
             }
             else
             {
-
-                if (e.State == Status.Error || e.State == Status.Cancel)
-                {
-                    button_RunButton.Enabled = true;
-                    buttonCancel.Visible = false;
-                    StopProgressBar();
-                    return true;
-                }
-
-                else if (e.State == Status.Stop)
+                //set state
+                finderState = e.State;
+                     
+                if ((finderState & Status.Result) > 0)
                 {
                     if (e.Resuld != null && e.Resuld.Count > 0)
                     {
                         FillTable((Finder.ToDataTable(e.Resuld)));
                     }
-
-                    button_RunButton.Enabled = true;
-                    buttonCancel.Visible = false;
-                    StopProgressBar();
-                    return true;
+                    
                 }
-
-                else if (e.State == Status.FileMessage && e.Message != null)
+                else if ((finderState & Status.FileMessage) > 0 && e.Message != null)
                 {
                     toolStripStatusLabelFile.Text = e.Message;
                     statusStrip1.Refresh();
-                   
-                    return true;
+                    statusStrip1.Invalidate();
                 }
-
-                else if (e.State == Status.Start)
+                else if ((finderState & Status.Run) > 0)
                 {
-                    toolStripStatusLabelTotalRows.Text = string.Empty;
-
-                    button_RunButton.Enabled = false;
-                    buttonCancel.Visible = true;
-                    toolStripStatusLabelFile.Text = string.Empty;
-
-
-                    this.Refresh();
-                    this.Invalidate();
-                    buttonCancel.Refresh();
-                    buttonCancel.Invalidate();
-                    //Thread.Sleep(1000);
-                    return true;
+                    //toolStripStatusLabelTotalRows.Text = string.Empty;
+                    //toolStripStatusLabelFile.Text = string.Empty;                    
                 }
-
+                return true;
             }
             return false;
         }
+
+        private void buttonRefresh()
+        {
+            if (buttonCancel.InvokeRequired)
+            {
+                MethodInvoker del = delegate { buttonRefresh();};
+                this.Invoke(del);
+            }
+            else
+            {
+                buttonCancel.Refresh();
+                buttonCancel.Invalidate();
+                button_RunButton.Refresh();
+                button_RunButton.Invalidate();
+                this.Refresh();
+                this.Invalidate();
+            }
+        }
+
+
 
         private void DataGrid_DoubleClick(object sender, EventArgs e)
         {

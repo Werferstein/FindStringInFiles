@@ -109,31 +109,32 @@ namespace FindStringInFile
             this.toolStripProgressBar1,
             this.toolStripStatusLabelTotalRows,
             this.toolStripStatusLabelFile});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 417);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 339);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(779, 27);
+            this.statusStrip1.Size = new System.Drawing.Size(584, 22);
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripProgressBar1
             // 
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 19);
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(75, 16);
             // 
             // toolStripStatusLabelTotalRows
             // 
             this.toolStripStatusLabelTotalRows.AutoSize = false;
             this.toolStripStatusLabelTotalRows.Name = "toolStripStatusLabelTotalRows";
-            this.toolStripStatusLabelTotalRows.Size = new System.Drawing.Size(200, 21);
+            this.toolStripStatusLabelTotalRows.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always;
+            this.toolStripStatusLabelTotalRows.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripStatusLabelTotalRows.Size = new System.Drawing.Size(200, 17);
             this.toolStripStatusLabelTotalRows.Text = "Total rows:";
-            this.toolStripStatusLabelTotalRows.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripStatusLabelTotalRows.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // toolStripStatusLabelFile
             // 
             this.toolStripStatusLabelFile.AutoToolTip = true;
             this.toolStripStatusLabelFile.Name = "toolStripStatusLabelFile";
-            this.toolStripStatusLabelFile.Size = new System.Drawing.Size(0, 21);
+            this.toolStripStatusLabelFile.Size = new System.Drawing.Size(0, 17);
             this.toolStripStatusLabelFile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolStripStatusLabelFile.TextChanged += new System.EventHandler(this.ToolStripStatusLabelFile_TextChanged);
             // 
@@ -142,10 +143,9 @@ namespace FindStringInFile
             this.textBoxFilter.AcceptsReturn = true;
             this.textBoxFilter.AcceptsTab = true;
             this.textBoxFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFilter.Location = new System.Drawing.Point(4, 119);
-            this.textBoxFilter.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxFilter.Location = new System.Drawing.Point(3, 97);
             this.textBoxFilter.Name = "textBoxFilter";
-            this.textBoxFilter.Size = new System.Drawing.Size(205, 26);
+            this.textBoxFilter.Size = new System.Drawing.Size(155, 22);
             this.textBoxFilter.TabIndex = 3;
             this.textBoxFilter.TextChanged += new System.EventHandler(this.TextBoxFilter_TextChanged);
             // 
@@ -153,10 +153,9 @@ namespace FindStringInFile
             // 
             this.labelParameter2Label.AutoSize = true;
             this.labelParameter2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelParameter2Label.Location = new System.Drawing.Point(9, 95);
-            this.labelParameter2Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelParameter2Label.Location = new System.Drawing.Point(7, 77);
             this.labelParameter2Label.Name = "labelParameter2Label";
-            this.labelParameter2Label.Size = new System.Drawing.Size(184, 20);
+            this.labelParameter2Label.Size = new System.Drawing.Size(138, 16);
             this.labelParameter2Label.TabIndex = 23;
             this.labelParameter2Label.Text = "Filter:   (e.g.   *.txt|*.log)";
             // 
@@ -166,10 +165,9 @@ namespace FindStringInFile
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.SystemColors.Control;
             this.label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label7.Location = new System.Drawing.Point(509, 7);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(382, 6);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(265, 17);
+            this.label7.Size = new System.Drawing.Size(198, 13);
             this.label7.TabIndex = 20;
             this.label7.Text = "SingleQueryWindow (C) Ingolf Hill (2015)";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -181,11 +179,10 @@ namespace FindStringInFile
             this.textBoxNr.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNr.Location = new System.Drawing.Point(216, 63);
-            this.textBoxNr.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxNr.Location = new System.Drawing.Point(162, 51);
             this.textBoxNr.Multiline = true;
             this.textBoxNr.Name = "textBoxNr";
-            this.textBoxNr.Size = new System.Drawing.Size(450, 26);
+            this.textBoxNr.Size = new System.Drawing.Size(338, 22);
             this.textBoxNr.TabIndex = 2;
             this.textBoxNr.TextChanged += new System.EventHandler(this.TextBoxNr_TextChanged);
             this.textBoxNr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNr_KeyPress);
@@ -194,10 +191,9 @@ namespace FindStringInFile
             // 
             this.button_RunButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.button_RunButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_RunButton.Location = new System.Drawing.Point(4, 43);
-            this.button_RunButton.Margin = new System.Windows.Forms.Padding(4);
+            this.button_RunButton.Location = new System.Drawing.Point(3, 35);
             this.button_RunButton.Name = "button_RunButton";
-            this.button_RunButton.Size = new System.Drawing.Size(123, 47);
+            this.button_RunButton.Size = new System.Drawing.Size(92, 38);
             this.button_RunButton.TabIndex = 1;
             this.button_RunButton.Text = "Find";
             this.button_RunButton.UseVisualStyleBackColor = false;
@@ -208,25 +204,23 @@ namespace FindStringInFile
             this.panelTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelTable.Location = new System.Drawing.Point(0, 181);
-            this.panelTable.Margin = new System.Windows.Forms.Padding(4);
+            this.panelTable.Location = new System.Drawing.Point(0, 147);
             this.panelTable.Name = "panelTable";
-            this.panelTable.Size = new System.Drawing.Size(779, 233);
+            this.panelTable.Size = new System.Drawing.Size(584, 189);
             this.panelTable.TabIndex = 4;
             // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 147);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Location = new System.Drawing.Point(0, 119);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(779, 34);
+            this.panel3.Size = new System.Drawing.Size(584, 28);
             this.panel3.TabIndex = 10;
             // 
             // queryToolStripMenuItem
             // 
             this.queryToolStripMenuItem.Name = "queryToolStripMenuItem";
-            this.queryToolStripMenuItem.Size = new System.Drawing.Size(338, 26);
+            this.queryToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
             this.queryToolStripMenuItem.Text = "Info";
             this.queryToolStripMenuItem.Click += new System.EventHandler(this.TS_Version_Click);
             // 
@@ -237,7 +231,7 @@ namespace FindStringInFile
             this.toolStripMenuItemNotepadPath,
             this.toolStripMenuItemNotePadWindows});
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
-            this.systemToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
+            this.systemToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.systemToolStripMenuItem.Text = "System";
             // 
             // toolStripMenuItemNotepadPath
@@ -249,7 +243,7 @@ namespace FindStringInFile
             this.toolStripMenuItem1,
             this.toolStripTextBoxNotepadPlusStart});
             this.toolStripMenuItemNotepadPath.Name = "toolStripMenuItemNotepadPath";
-            this.toolStripMenuItemNotepadPath.Size = new System.Drawing.Size(338, 26);
+            this.toolStripMenuItemNotepadPath.Size = new System.Drawing.Size(263, 22);
             this.toolStripMenuItemNotepadPath.Text = "notepad++ path                                  ";
             this.toolStripMenuItemNotepadPath.DoubleClick += new System.EventHandler(this.ToolStripMenuItemNotepadPath_DoubleClick);
             // 
@@ -257,21 +251,21 @@ namespace FindStringInFile
             // 
             this.toolStripMenuItem4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(655, 26);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(515, 22);
             this.toolStripMenuItem4.Text = "Path:";
             // 
             // toolStripTextBoxNotepadPath
             // 
             this.toolStripTextBoxNotepadPath.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxNotepadPath.Name = "toolStripTextBoxNotepadPath";
-            this.toolStripTextBoxNotepadPath.Size = new System.Drawing.Size(400, 27);
+            this.toolStripTextBoxNotepadPath.Size = new System.Drawing.Size(400, 23);
             this.toolStripTextBoxNotepadPath.TextChanged += new System.EventHandler(this.ToolStripTextBoxNotepadPath_TextChanged_1);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(655, 26);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(515, 22);
             this.toolStripMenuItem1.Text = "Start parameter: ($path = file path, $linenr = line number, $find = search string" +
     ")";
             // 
@@ -279,7 +273,7 @@ namespace FindStringInFile
             // 
             this.toolStripTextBoxNotepadPlusStart.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxNotepadPlusStart.Name = "toolStripTextBoxNotepadPlusStart";
-            this.toolStripTextBoxNotepadPlusStart.Size = new System.Drawing.Size(400, 27);
+            this.toolStripTextBoxNotepadPlusStart.Size = new System.Drawing.Size(400, 23);
             this.toolStripTextBoxNotepadPlusStart.TextChanged += new System.EventHandler(this.ToolStripTextBoxNotepadPlusStart_TextChanged);
             // 
             // toolStripMenuItemNotePadWindows
@@ -292,7 +286,7 @@ namespace FindStringInFile
             this.toolStripMenuItem2,
             this.toolStripTextBoxWinStart});
             this.toolStripMenuItemNotePadWindows.Name = "toolStripMenuItemNotePadWindows";
-            this.toolStripMenuItemNotePadWindows.Size = new System.Drawing.Size(338, 26);
+            this.toolStripMenuItemNotePadWindows.Size = new System.Drawing.Size(263, 22);
             this.toolStripMenuItemNotePadWindows.Text = "notepad (Windows)";
             this.toolStripMenuItemNotePadWindows.DoubleClick += new System.EventHandler(this.ToolStripMenuItemNotePadWindows_DoubleClick);
             // 
@@ -300,21 +294,21 @@ namespace FindStringInFile
             // 
             this.pathToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
-            this.pathToolStripMenuItem.Size = new System.Drawing.Size(655, 26);
+            this.pathToolStripMenuItem.Size = new System.Drawing.Size(515, 22);
             this.pathToolStripMenuItem.Text = "Path:";
             // 
             // toolStripTextBoxWinPath
             // 
             this.toolStripTextBoxWinPath.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxWinPath.Name = "toolStripTextBoxWinPath";
-            this.toolStripTextBoxWinPath.Size = new System.Drawing.Size(400, 27);
+            this.toolStripTextBoxWinPath.Size = new System.Drawing.Size(400, 23);
             this.toolStripTextBoxWinPath.TextChanged += new System.EventHandler(this.ToolStripTextBoxWinPath_TextChanged);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(655, 26);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(515, 22);
             this.toolStripMenuItem2.Text = "Start parameter: ($path = file path, $linenr = line number, $find = search string" +
     ")";
             // 
@@ -322,17 +316,16 @@ namespace FindStringInFile
             // 
             this.toolStripTextBoxWinStart.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxWinStart.Name = "toolStripTextBoxWinStart";
-            this.toolStripTextBoxWinStart.Size = new System.Drawing.Size(400, 27);
+            this.toolStripTextBoxWinStart.Size = new System.Drawing.Size(400, 23);
             this.toolStripTextBoxWinStart.TextChanged += new System.EventHandler(this.ToolStripTextBoxWinStart_TextChanged);
             // 
             // labelParameter1Label
             // 
             this.labelParameter1Label.AutoSize = true;
             this.labelParameter1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelParameter1Label.Location = new System.Drawing.Point(212, 39);
-            this.labelParameter1Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelParameter1Label.Location = new System.Drawing.Point(159, 32);
             this.labelParameter1Label.Name = "labelParameter1Label";
-            this.labelParameter1Label.Size = new System.Drawing.Size(65, 20);
+            this.labelParameter1Label.Size = new System.Drawing.Size(52, 16);
             this.labelParameter1Label.TabIndex = 19;
             this.labelParameter1Label.Text = "String:";
             // 
@@ -343,7 +336,8 @@ namespace FindStringInFile
             this.systemToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(779, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(584, 24);
             this.menuStrip1.TabIndex = 21;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -368,9 +362,8 @@ namespace FindStringInFile
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(779, 181);
+            this.panel1.Size = new System.Drawing.Size(584, 147);
             this.panel1.TabIndex = 3;
             // 
             // labelEncoding
@@ -378,10 +371,9 @@ namespace FindStringInFile
             this.labelEncoding.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelEncoding.AutoSize = true;
             this.labelEncoding.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEncoding.Location = new System.Drawing.Point(669, 39);
-            this.labelEncoding.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEncoding.Location = new System.Drawing.Point(502, 32);
             this.labelEncoding.Name = "labelEncoding";
-            this.labelEncoding.Size = new System.Drawing.Size(92, 20);
+            this.labelEncoding.Size = new System.Drawing.Size(77, 16);
             this.labelEncoding.TabIndex = 41;
             this.labelEncoding.Text = "Encoding:";
             // 
@@ -397,10 +389,9 @@ namespace FindStringInFile
             "UTF32",
             "Unicode",
             "ASCII"});
-            this.comboBoxEncoding.Location = new System.Drawing.Point(673, 63);
-            this.comboBoxEncoding.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxEncoding.Location = new System.Drawing.Point(505, 51);
             this.comboBoxEncoding.Name = "comboBoxEncoding";
-            this.comboBoxEncoding.Size = new System.Drawing.Size(101, 25);
+            this.comboBoxEncoding.Size = new System.Drawing.Size(77, 21);
             this.comboBoxEncoding.TabIndex = 40;
             this.comboBoxEncoding.TabStop = false;
             this.comboBoxEncoding.Text = "UTF8";
@@ -409,10 +400,9 @@ namespace FindStringInFile
             // checkBoxIsHex
             // 
             this.checkBoxIsHex.AutoSize = true;
-            this.checkBoxIsHex.Location = new System.Drawing.Point(330, 41);
-            this.checkBoxIsHex.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxIsHex.Location = new System.Drawing.Point(248, 33);
             this.checkBoxIsHex.Name = "checkBoxIsHex";
-            this.checkBoxIsHex.Size = new System.Drawing.Size(241, 21);
+            this.checkBoxIsHex.Size = new System.Drawing.Size(184, 17);
             this.checkBoxIsHex.TabIndex = 38;
             this.checkBoxIsHex.Text = "Is hexadecimal  ( sep.  FF,AE,15 )";
             this.checkBoxIsHex.UseVisualStyleBackColor = true;
@@ -422,10 +412,9 @@ namespace FindStringInFile
             // 
             this.buttonCancel.BackColor = System.Drawing.SystemColors.Control;
             this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCancel.Location = new System.Drawing.Point(125, 43);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonCancel.Location = new System.Drawing.Point(94, 35);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(85, 47);
+            this.buttonCancel.Size = new System.Drawing.Size(64, 38);
             this.buttonCancel.TabIndex = 37;
             this.buttonCancel.TabStop = false;
             this.buttonCancel.Text = "Cancel";
@@ -435,10 +424,9 @@ namespace FindStringInFile
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(759, 118);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(569, 96);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(16, 28);
+            this.button1.Size = new System.Drawing.Size(12, 23);
             this.button1.TabIndex = 35;
             this.button1.Text = "....";
             this.button1.UseVisualStyleBackColor = true;
@@ -451,11 +439,10 @@ namespace FindStringInFile
             this.textBoxPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPath.Location = new System.Drawing.Point(216, 119);
-            this.textBoxPath.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxPath.Location = new System.Drawing.Point(162, 97);
             this.textBoxPath.Name = "textBoxPath";
             this.textBoxPath.ShortcutsEnabled = false;
-            this.textBoxPath.Size = new System.Drawing.Size(545, 26);
+            this.textBoxPath.Size = new System.Drawing.Size(410, 22);
             this.textBoxPath.TabIndex = 33;
             this.toolTip.SetToolTip(this.textBoxPath, "Test");
             this.textBoxPath.TextChanged += new System.EventHandler(this.TextBoxPath_TextChanged);
@@ -464,10 +451,9 @@ namespace FindStringInFile
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(217, 95);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(163, 77);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 20);
+            this.label5.Size = new System.Drawing.Size(43, 16);
             this.label5.TabIndex = 34;
             this.label5.Text = "Path:";
             // 
@@ -480,10 +466,9 @@ namespace FindStringInFile
             this.DirectorySelect.Items.AddRange(new object[] {
             "TopDirectoryOnly",
             " AllDirectories"});
-            this.DirectorySelect.Location = new System.Drawing.Point(586, 92);
-            this.DirectorySelect.Margin = new System.Windows.Forms.Padding(4);
+            this.DirectorySelect.Location = new System.Drawing.Point(440, 75);
             this.DirectorySelect.Name = "DirectorySelect";
-            this.DirectorySelect.Size = new System.Drawing.Size(189, 25);
+            this.DirectorySelect.Size = new System.Drawing.Size(143, 21);
             this.DirectorySelect.TabIndex = 26;
             this.DirectorySelect.TabStop = false;
             this.DirectorySelect.Text = "TopDirectoryOnly";
@@ -491,15 +476,14 @@ namespace FindStringInFile
             // 
             // FindStringInFileForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 444);
+            this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panelTable);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(794, 481);
+            this.MinimumSize = new System.Drawing.Size(600, 398);
             this.Name = "FindStringInFileForm";
             this.Text = "Find String In File";
             this.statusStrip1.ResumeLayout(false);

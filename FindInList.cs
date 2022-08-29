@@ -44,15 +44,15 @@ namespace FindStringInFile
     #region EventArgs
     public delegate bool FinderStateHandler(object sender, FindEventArgs e);
 
-    public enum Status
+    public enum Status:UInt32
     {
         Null = 0,
-        Start = 1,
-        Stop = 2,
-        Error = 3,
-        Found = 4,
-        Cancel = 5,
-        FileMessage = 6
+        Run =    1 << 0,
+        Result = 1 << 2,
+        Error =  1 << 3,
+        Found =  1 << 4,
+        Cancel = 1 << 5,
+        FileMessage = 1 << 6,
     }
 
     public class FindEventArgs : EventArgs
@@ -92,7 +92,7 @@ namespace FindStringInFile
         #region Async Signal
         private static CancellationTokenSource mStopWorking;
 
-        private static Status mProgStatus = Status.Stop;
+        private static Status mProgStatus = Status.Result;
         public static Status ProgStatus { get { return mProgStatus; } }
 
         public static Task MyTask { get; set; }
@@ -103,8 +103,11 @@ namespace FindStringInFile
             {
                 mStopWorking.Cancel();
             }
+            
+            mProgStatus &= ~Status.Run;
+            mProgStatus |= Status.Cancel;
+            mProgStatus |= Status.Result;
 
-            mProgStatus = Status.Stop;
             mFindInList = new List<FindPos>();
             sortNr = 1;
 
@@ -112,7 +115,7 @@ namespace FindStringInFile
             {
                 FindEventArgs ar = new FindEventArgs
                 {
-                    State = Status.Cancel,
+                    State = mProgStatus,
                     Message = mMessage.ToString()
                 };
                 MyFinderState(typeof(Finder).ToString(), ar);
@@ -124,13 +127,13 @@ namespace FindStringInFile
         {
             mMessage.AppendLine(caller);
 
-            mProgStatus = Status.Cancel;
+            mProgStatus |= Status.Cancel;
 
             if (MyFinderState != null)
             {
                 FindEventArgs ar = new FindEventArgs
                 {
-                    State = Status.Cancel,
+                    State = mProgStatus,
                     Message = caller
                 };
                 MyFinderState(typeof(Finder).ToString(), ar);
@@ -143,13 +146,13 @@ namespace FindStringInFile
             mMessage.AppendLine("Start");
             mMessage.AppendLine(caller);
 
-            mProgStatus = Status.Start;
+            mProgStatus = Status.Run;
 
             if (MyFinderState != null)
             {
                 FindEventArgs ar = new FindEventArgs
                 {
-                    State = Status.Start,
+                    State = mProgStatus,
                     Message = caller
                 };
                 MyFinderState(typeof(Finder).ToString(), ar);
@@ -157,13 +160,14 @@ namespace FindStringInFile
         }
         private static void SignalEnd()
         {
-            mProgStatus = Status.Stop;
+            mProgStatus &= ~Status.Run;
+            mProgStatus |= Status.Result;
 
             if (MyFinderState != null)
             {
                 FindEventArgs ar = new FindEventArgs
                 {
-                    State = Status.Stop,
+                    State = mProgStatus,
                     Message = mMessage.ToString()
                 };
 
@@ -307,6 +311,8 @@ namespace FindStringInFile
         private static void Find(string nr, string path, string encoding = "UTF8")
         {
             taskCount++;
+            mProgStatus &= ~Status.Error;
+            mProgStatus &= ~Status.FileMessage;
 
             int lineNr = 1;
             if (System.IO.File.Exists(path))
@@ -317,10 +323,11 @@ namespace FindStringInFile
                     {
                         FindEventArgs ar = new FindEventArgs
                         {
-                            State = Status.FileMessage,
+                            State = mProgStatus | Status.FileMessage,
                             Message = path
                         };
                         MyFinderState(typeof(Finder).ToString(), ar);
+                        mProgStatus &= ~Status.FileMessage;
                     }
 
                     Encoding enc = Encoding.UTF8;
@@ -381,8 +388,10 @@ namespace FindStringInFile
                 }
                 catch (Exception ex)
                 {
+                    mProgStatus |= Status.Error;
                     if (MyFinderState != null)
                     {
+                        
                         FindEventArgs ar = new FindEventArgs
                         {
                             State = Status.Error,
@@ -391,12 +400,13 @@ namespace FindStringInFile
                         MyFinderState(typeof(Finder).ToString(), ar);
                     }
 
-                    mFindInList.Add(new FindPos { Sort = sortNr, LineNr = lineNr, Pos = -1, File = "ERROR: " + path + ", " + ex.Message });
+                    mFindInList.Add(new FindPos { Sort = sortNr, LineNr = lineNr, Pos = -1, File = "ERROR: " + path + ", " + ex.Message });                    
                     sortNr++;
                 }
             }
             else
             {
+                mProgStatus |= Status.Error;
                 if (MyFinderState != null)
                 {
                     FindEventArgs ar = new FindEventArgs
@@ -479,6 +489,7 @@ namespace FindStringInFile
                                         {
                                             if (MyFinderState != null)
                                             {
+                                                mProgStatus |= Status.Error;
                                                 FindEventArgs ar = new FindEventArgs
                                                 {
                                                     State = Status.Error,
@@ -501,6 +512,7 @@ namespace FindStringInFile
                         }
                         catch (Exception ex)
                         {
+                            mProgStatus |= Status.Error;
                             if (MyFinderState != null)
                             {
                                 FindEventArgs ar = new FindEventArgs

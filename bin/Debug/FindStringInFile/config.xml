@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<Config xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" NodePadPlusPath="" NodePadPlusStart="" NodePadPath="C:\Windows\system32\notepad.exe" NodePadStart="&quot;$path&quot;" FindString="Hill" FindInDir="D:\" Filter="*.txt" TopDirectoryOnly="false" SelectNodePadPlus="false" IsHex="false" StrEncoding="UTF8" />

@@ -9,3 +9,4 @@ D:\Bluefrog\Documents\GitHub\FindStringInFiles\obj\Release\FindStringInFile.cspr
 D:\Bluefrog\Documents\GitHub\FindStringInFiles\obj\Release\FindStringInFile.csproj.CopyComplete
 D:\Bluefrog\Documents\GitHub\FindStringInFiles\obj\Release\FindStringInFile.exe
 D:\Bluefrog\Documents\GitHub\FindStringInFiles\obj\Release\FindStringInFile.pdb
+D:\Bluefrog\Documents\GitHub\FindStringInFiles\obj\Release\FindStringInFile.csproj.AssemblyReference.cache
