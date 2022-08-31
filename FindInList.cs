@@ -117,7 +117,7 @@ namespace FindStringInFile
         }
 
 
-        public async Task<int> FindIn(string nr, string path, FileInfo info, string encoding = "UTF8")
+        public async Task<int> FindIn(string nr, string path, FileInfo info, string encoding = "UTF8", bool CaseSensitive = true)
         {
             if (Finder.mStopWorking.IsCancellationRequested) return -1;
             
@@ -166,14 +166,25 @@ namespace FindStringInFile
 
 
                         
-                        foreach (var line in File.ReadLines(path, enc))
+                        foreach (string line in File.ReadLines(path, enc))
                         {
                             if (!Finder.mStopWorking.IsCancellationRequested)
                             {
-                                if (line.Contains(nr))
+                                bool f = false;
+                                string newLine = line;
+                                if (CaseSensitive)
+                                    f = newLine.Contains(nr);
+                                else
+                                {                                    
+                                    nr = nr.ToUpper();
+                                    newLine = line.ToUpper();
+                                    f = newLine.Contains(nr);
+                                }
+
+                                if (f)
                                 {
                                     int posNr = 1;
-                                    while ((posNr = line.IndexOf(nr, posNr)) != -1)
+                                    while ((posNr = newLine.IndexOf(nr, posNr)) != -1)
                                     {
                                         if (!Finder.mStopWorking.IsCancellationRequested)
                                         {
@@ -452,7 +463,7 @@ namespace FindStringInFile
             {
                 s = SearchOption.TopDirectoryOnly;
             }            
-            FindAll(conf.FindString, conf.FindInDir, conf.Filter, s, conf.MaxSearchInstances,  conf.StrEncoding,conf.MaxFileSizeMB );
+            FindAll(conf.FindString, conf.FindInDir, conf.Filter, s, conf.MaxSearchInstances,  conf.StrEncoding,conf.MaxFileSizeMB, conf.CaseSensitive);
         }
  
 
@@ -467,7 +478,7 @@ namespace FindStringInFile
         /// 
         /// 
         /// <returns></returns>
-        public static void FindAll(string findStr, string dirPath, string filter, System.IO.SearchOption searchOption, int maxTask = 6, string encoding = "UTF8", long maxFileSize = 1)
+        public static void FindAll(string findStr, string dirPath, string filter, System.IO.SearchOption searchOption, int maxTask = 6, string encoding = "UTF8", long maxFileSize = 1, bool CaseSensitive = true)
         {
             if (maxTask < 1) maxTask = 1;
             if (maxFileSize < 1) maxFileSize = 1;
@@ -528,7 +539,7 @@ namespace FindStringInFile
                                     FindThread.TaskCount++;
                                     Task Task2 = Task.Run(() =>
                                     {
-                                        TaskList.Add(u.FindIn(findStr, file, info, encoding));
+                                        TaskList.Add(u.FindIn(findStr, file, info, encoding, CaseSensitive));
                                         mProgStatus |= Status.Run;
                                     });
                                 }

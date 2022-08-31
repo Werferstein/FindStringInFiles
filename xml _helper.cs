@@ -60,6 +60,7 @@ namespace FindStringInFile
             StrEncoding = "UTF8";
             MaxSearchInstances = 10;
             MaxFileSizeMB = 1;
+            CaseSensitive = true;
         }
         [XmlIgnore]
         public bool Error { get; set; }
@@ -93,7 +94,9 @@ namespace FindStringInFile
         public long MaxFileSizeMB { get; set; }
         [XmlAttribute]
         public string StrEncoding { get; set; }
-        
+        [XmlAttribute]
+        public bool CaseSensitive { get; set; }
+
 
         public static Config ConfigLoad(string path, string key)
         {

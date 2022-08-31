@@ -42,7 +42,6 @@ namespace FindStringInFile
 
         public static Config ProgConfig { get; set; }
 
-
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
@@ -51,7 +50,6 @@ namespace FindStringInFile
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
 
             ProgConfig = Config.LoadConfig();
 

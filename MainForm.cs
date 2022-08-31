@@ -192,7 +192,7 @@ namespace FindStringInFile
             toolStripTextBoxWinPath.Text = Program.ProgConfig.NodePadPath;
             toolStripTextBoxWinStart.Text = Program.ProgConfig.NodePadStart;
 
-
+            checkBoxCaseSensitive.Checked = Program.ProgConfig.CaseSensitive;
 
 
 
@@ -405,10 +405,10 @@ namespace FindStringInFile
             Cursor.Current = Cursors.WaitCursor;
 
             SearchOption s = DirectorySelect.SelectedIndex != 0 ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly;
-            Finder.FindAll(textBoxNr.Text, textBoxPath.Text, textBoxFilter.Text, s, Program.ProgConfig.MaxSearchInstances, Program.ProgConfig.StrEncoding);
+            
+            Finder.FindAll(textBoxNr.Text, textBoxPath.Text, textBoxFilter.Text, s, Program.ProgConfig.MaxSearchInstances, Program.ProgConfig.StrEncoding, Program.ProgConfig.MaxFileSizeMB, Program.ProgConfig.CaseSensitive);
 
             Cursor.Current = Cursors.Default;
-
         }
 
 
@@ -998,6 +998,12 @@ namespace FindStringInFile
         private void FindStringInFileForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Finder.Cancel();
+        }
+
+        private void checkBoxCaseSensitive_CheckedChanged(object sender, EventArgs e)
+        {
+            if (blockGui) return;
+            Program.ProgConfig.CaseSensitive= checkBoxCaseSensitive.Checked;
         }
     }
 }

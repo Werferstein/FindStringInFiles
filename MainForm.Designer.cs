@@ -99,6 +99,7 @@ namespace FindStringInFile
             this.label5 = new System.Windows.Forms.Label();
             this.DirectorySelect = new System.Windows.Forms.ComboBox();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.checkBoxCaseSensitive = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -387,6 +388,7 @@ namespace FindStringInFile
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.checkBoxCaseSensitive);
             this.panel1.Controls.Add(this.labelEncoding);
             this.panel1.Controls.Add(this.comboBoxEncoding);
             this.panel1.Controls.Add(this.checkBoxIsHex);
@@ -442,8 +444,9 @@ namespace FindStringInFile
             // 
             // checkBoxIsHex
             // 
+            this.checkBoxIsHex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxIsHex.AutoSize = true;
-            this.checkBoxIsHex.Location = new System.Drawing.Point(248, 33);
+            this.checkBoxIsHex.Location = new System.Drawing.Point(319, 33);
             this.checkBoxIsHex.Name = "checkBoxIsHex";
             this.checkBoxIsHex.Size = new System.Drawing.Size(184, 17);
             this.checkBoxIsHex.TabIndex = 38;
@@ -517,6 +520,18 @@ namespace FindStringInFile
             this.DirectorySelect.Text = "TopDirectoryOnly";
             this.DirectorySelect.SelectedIndexChanged += new System.EventHandler(this.DirectorySelect_SelectedIndexChanged);
             // 
+            // checkBoxCaseSensitive
+            // 
+            this.checkBoxCaseSensitive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxCaseSensitive.AutoSize = true;
+            this.checkBoxCaseSensitive.Location = new System.Drawing.Point(218, 33);
+            this.checkBoxCaseSensitive.Name = "checkBoxCaseSensitive";
+            this.checkBoxCaseSensitive.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxCaseSensitive.TabIndex = 42;
+            this.checkBoxCaseSensitive.Text = "Case sensitive";
+            this.checkBoxCaseSensitive.UseVisualStyleBackColor = true;
+            this.checkBoxCaseSensitive.CheckedChanged += new System.EventHandler(this.checkBoxCaseSensitive_CheckedChanged);
+            // 
             // FindStringInFileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -582,6 +597,7 @@ namespace FindStringInFile
         private System.Windows.Forms.ToolStripTextBox toolStripMaxSearchInstances;
         private System.Windows.Forms.ToolStripMenuItem maxFileSizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox toolStripMaxFileSize;
+        private System.Windows.Forms.CheckBox checkBoxCaseSensitive;
     }
 }
 
