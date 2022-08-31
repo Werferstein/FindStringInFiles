@@ -58,6 +58,8 @@ namespace FindStringInFile
             TopDirectoryOnly = true;
             IsHex = false;
             StrEncoding = "UTF8";
+            MaxSearchInstances = 10;
+            MaxFileSizeMB = 1;
         }
         [XmlIgnore]
         public bool Error { get; set; }
@@ -85,7 +87,10 @@ namespace FindStringInFile
         public bool SelectNodePadPlus { get; set; }
         [XmlAttribute]
         public bool IsHex { get; set; }
-
+        [XmlAttribute]
+        public int  MaxSearchInstances { get; set; }
+        [XmlAttribute]
+        public long MaxFileSizeMB { get; set; }
         [XmlAttribute]
         public string StrEncoding { get; set; }
         

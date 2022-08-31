@@ -49,28 +49,6 @@ namespace FindStringInFile
         [STAThread]
         static void Main()
         {
-            //byte[] haystack = new byte[10000];
-
-            byte[] haystack = Encoding.UTF8.GetBytes("FJNGAFUZIKJHKANPANMANGHJGFUIGERUNGJK");
-
-            //byte[] bytePattern = { 0x00, 0x69, 0x73, 0x6F, 0x6D };
-
-            byte[] bytePattern = Encoding.UTF8.GetBytes("ANPANMAN");
-
-            // Put a few copies of the needle into the haystack.
-
-            //for (int i = 1000; i <= 9000; i += 1000)
-            //    Array.Copy(bytePattern, 0, haystack, i, bytePattern.Length);
-
-            var searcher = new FindSequenceOfBytes(bytePattern);
-
-            foreach (int index in searcher.Search(haystack))
-                Console.WriteLine(index);
-
-
-            
-            
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

@@ -83,6 +83,10 @@ namespace FindStringInFile
             this.toolStripTextBoxWinPath = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBoxWinStart = new System.Windows.Forms.ToolStripTextBox();
+            this.maxSearchInstancesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMaxSearchInstances = new System.Windows.Forms.ToolStripTextBox();
+            this.maxFileSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMaxFileSize = new System.Windows.Forms.ToolStripTextBox();
             this.labelParameter1Label = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -229,7 +233,9 @@ namespace FindStringInFile
             this.systemToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.queryToolStripMenuItem,
             this.toolStripMenuItemNotepadPath,
-            this.toolStripMenuItemNotePadWindows});
+            this.toolStripMenuItemNotePadWindows,
+            this.maxSearchInstancesToolStripMenuItem,
+            this.maxFileSizeToolStripMenuItem});
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
             this.systemToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.systemToolStripMenuItem.Text = "System";
@@ -318,6 +324,43 @@ namespace FindStringInFile
             this.toolStripTextBoxWinStart.Name = "toolStripTextBoxWinStart";
             this.toolStripTextBoxWinStart.Size = new System.Drawing.Size(400, 23);
             this.toolStripTextBoxWinStart.TextChanged += new System.EventHandler(this.ToolStripTextBoxWinStart_TextChanged);
+            // 
+            // maxSearchInstancesToolStripMenuItem
+            // 
+            this.maxSearchInstancesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMaxSearchInstances});
+            this.maxSearchInstancesToolStripMenuItem.Name = "maxSearchInstancesToolStripMenuItem";
+            this.maxSearchInstancesToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.maxSearchInstancesToolStripMenuItem.Text = "max search instances";
+            // 
+            // toolStripMaxSearchInstances
+            // 
+            this.toolStripMaxSearchInstances.AcceptsReturn = true;
+            this.toolStripMaxSearchInstances.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripMaxSearchInstances.MaxLength = 3;
+            this.toolStripMaxSearchInstances.Name = "toolStripMaxSearchInstances";
+            this.toolStripMaxSearchInstances.Size = new System.Drawing.Size(100, 23);
+            this.toolStripMaxSearchInstances.Text = "10";
+            this.toolStripMaxSearchInstances.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.toolStripMaxSearchInstances.TextChanged += new System.EventHandler(this.toolStripMaxSearchInstances_TextChanged);
+            // 
+            // maxFileSizeToolStripMenuItem
+            // 
+            this.maxFileSizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMaxFileSize});
+            this.maxFileSizeToolStripMenuItem.Name = "maxFileSizeToolStripMenuItem";
+            this.maxFileSizeToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.maxFileSizeToolStripMenuItem.Text = "max file size (MB)";
+            // 
+            // toolStripMaxFileSize
+            // 
+            this.toolStripMaxFileSize.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripMaxFileSize.MaxLength = 8;
+            this.toolStripMaxFileSize.Name = "toolStripMaxFileSize";
+            this.toolStripMaxFileSize.Size = new System.Drawing.Size(100, 23);
+            this.toolStripMaxFileSize.Text = "1000";
+            this.toolStripMaxFileSize.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.toolStripMaxFileSize.TextChanged += new System.EventHandler(this.toolStripMaxFileSize_TextChanged);
             // 
             // labelParameter1Label
             // 
@@ -486,6 +529,7 @@ namespace FindStringInFile
             this.MinimumSize = new System.Drawing.Size(600, 398);
             this.Name = "FindStringInFileForm";
             this.Text = "Find String In File";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FindStringInFileForm_FormClosing);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).EndInit();
@@ -534,6 +578,10 @@ namespace FindStringInFile
         private System.Windows.Forms.ComboBox comboBoxEncoding;
         private System.Windows.Forms.Label labelEncoding;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripMenuItem maxSearchInstancesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox toolStripMaxSearchInstances;
+        private System.Windows.Forms.ToolStripMenuItem maxFileSizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox toolStripMaxFileSize;
     }
 }
 
